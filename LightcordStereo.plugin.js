@@ -21,10 +21,10 @@ module.exports = class LightcordStereo {
             if (!thisObj || !thisObj.conn || !thisObj.conn.setTransportOptions) return;
             
             const conn = thisObj.conn;
-            const originalSetTransportOptions = conn.setTransportOptions.bind(conn);
+            const setTransportOptions = conn.setTransportOptions.bind(conn);
             
             conn.setTransportOptions = (options) => {
-                if (!options || typeof options !== "object") return originalSetTransportOptions(options);
+                if (!options || typeof options !== "object") return setTransportOptions(options);
                 
                 Object.assign(options, {
                     audioEncoder: {
@@ -40,7 +40,7 @@ module.exports = class LightcordStereo {
                     callMaxBitRate: 512000,
                 });
                 
-                originalSetTransportOptions(options);
+                setTransportOptions(options);
             };
         });
     }
