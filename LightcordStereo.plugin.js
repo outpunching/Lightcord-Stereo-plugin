@@ -36,8 +36,6 @@ module.exports = class LightcordStereo {
                     },
                     packetLossRate: 0,
                     encodingBitRate: 512000,
-                    callBitrate: 512000,
-                    callMaxBitRate: 512000,
                 });
                 
                 setTransportOptions(options);
